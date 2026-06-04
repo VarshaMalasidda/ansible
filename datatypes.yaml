@@ -1,0 +1,23 @@
+-name: course infomation
+ hosts: local
+ connection: local
+ vars:
+  course: "devsecops with ai"
+  duration: 150
+  is_live_session: true
+  topics:
+  -linux
+  -shell
+  -ansible
+  more_details:
+    months: 5
+    trainer: "siva"
+ tasks:
+ - name: print info
+   debug:
+   msg: |
+   name: {{course}}
+   duration: {{duration}}
+   is_live_session: {{is_live_session}}
+   topics: {{topics}}
+   more_details: {{more_details}}
