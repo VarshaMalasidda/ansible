@@ -1,14 +1,23 @@
-- name: install and start nginx
-  hosts: frontend
-  become: yes
+- name: course information
+  hosts: local
+  connection: local
+  vars:
+    course: "DevSecOps with AIOps" # String
+    duration_in_hrs: 150 # int/number
+    is_live_sessions: true # bool
+    topics: # list
+    - linux
+    - shell
+    - ansible
+    more_details: # map
+      months: 5
+      trainer: "Sivakumar Reddy"
   tasks:
-  - name: install nginx
-    ansible.builtin.package:
-      name: nginx
-      state: present
-
-  - name: start nginx
-    service:
-      name: nginx
-      state: started
-      enabled: yes
+  - name: print information
+    debug:
+      msg: |
+        name: {{ course }}
+        duration: {{ duration_in_hrs }}
+        is_it_live: {{ is_live_sessions }}
+        topics: {{ topics }}
+        more_details: {{ more_details }}
